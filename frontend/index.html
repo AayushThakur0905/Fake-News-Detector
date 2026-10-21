@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FactCheck AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div class="logo">
+                <div class="logo-icon">✓</div>
+
+                <div>
+                    <h1>FactCheck AI</h1>
+                    <p>Check the facts. Understand the evidence.</p>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- MAIN -->
+        <main>
+
+            <!-- CLAIM INPUT -->
+            <section class="checker-card">
+
+                <h2>Check a news claim</h2>
+
+                <p class="subtitle">
+                    Enter a statement you've seen online and we'll search
+                    multiple news sources to check it.
+                </p>
+
+                <textarea
+                    id="claimInput"
+                    placeholder="Example: India's GDP grew by 7.8 percent in the latest quarter."
+                ></textarea>
+
+                <button id="checkButton" onclick="checkClaim()">
+                    Check Claim
+                </button>
+
+                <div id="errorMessage" class="error hidden"></div>
+
+            </section>
+
+
+            <!-- LOADING -->
+            <section id="loading" class="loading-card hidden">
+
+                <div class="loader"></div>
+
+                <h3>Checking your claim...</h3>
+
+                <p id="loadingText">
+                    Searching reliable news sources
+                </p>
+
+            </section>
+
+
+            <!-- RESULT -->
+            <section id="resultSection" class="hidden">
+
+                <!-- VERDICT -->
+                <div id="verdictCard" class="verdict-card">
+
+                    <div id="verdictIcon" class="verdict-icon">
+                        ?
+                    </div>
+
+                    <div class="verdict-content">
+
+                        <p class="small-title">
+                            OUR ASSESSMENT
+                        </p>
+
+                        <h2 id="verdictTitle">
+                            -
+                        </h2>
+
+                        <p id="verdictDescription">
+                            -
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CLAIM -->
+                <div class="result-card">
+
+                    <h3>Your claim</h3>
+
+                    <div id="resultClaim" class="claim-text">
+                        -
+                    </div>
+
+                </div>
+
+
+                <!-- EVIDENCE SUMMARY -->
+                <div class="result-card">
+
+                    <h3>What we found</h3>
+
+                    <div class="evidence-grid">
+
+                        <div class="evidence-box supporting">
+
+                            <div class="evidence-number"
+                                 id="supportingCount">
+                                0
+                            </div>
+
+                            <div>
+                                <strong>Supporting</strong>
+                                <span>sources</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="evidence-box contradicting">
+
+                            <div class="evidence-number"
+                                 id="contradictingCount">
+                                0
+                            </div>
+
+                            <div>
+                                <strong>Contradicting</strong>
+                                <span>sources</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="evidence-box neutral">
+
+                            <div class="evidence-number"
+                                 id="neutralCount">
+                                0
+                            </div>
+
+                            <div>
+                                <strong>Unclear</strong>
+                                <span>sources</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EXPLANATION -->
+                <div class="result-card">
+
+                    <h3>💡 Why?</h3>
+
+                    <p id="explanation">
+                        -
+                    </p>
+
+                </div>
+
+
+                <!-- SOURCES -->
+                <div class="result-card">
+
+                    <div class="sources-header">
+
+                        <div>
+                            <h3>📰 Sources checked</h3>
+
+                            <p id="sourceCount">
+                                -
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div id="sourcesList">
+                    </div>
+
+                </div>
+
+
+                <!-- TECHNICAL DETAILS -->
+                <details class="technical-details">
+
+                    <summary>
+                        Show how we checked this
+                    </summary>
+
+                    <div class="technical-content">
+
+                        <p>
+                            The system combines multiple signals to
+                            evaluate the claim.
+                        </p>
+
+                        <div class="technical-grid">
+
+                            <div>
+                                <span>NLI analysis</span>
+                                <strong>✓</strong>
+                            </div>
+
+                            <div>
+                                <span>Fact matching</span>
+                                <strong>✓</strong>
+                            </div>
+
+                            <div>
+                                <span>Source quality</span>
+                                <strong>✓</strong>
+                            </div>
+
+                            <div>
+                                <span>Evidence weighting</span>
+                                <strong>✓</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </details>
+
+
+                <!-- CHECK ANOTHER -->
+                <button
+                    class="secondary-button"
+                    onclick="resetChecker()"
+                >
+                    Check another claim
+                </button>
+
+            </section>
+
+        </main>
+
+
+        <!-- FOOTER -->
+        <footer>
+
+            <p>
+                FactCheck AI analyzes available evidence from multiple
+                sources. It should not be treated as an absolute guarantee
+                of truth.
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
